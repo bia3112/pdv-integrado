@@ -9,6 +9,7 @@ public class ItemVenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private int quantidade;
     private double valorUnitario;
     private double valorTotal;

@@ -1,7 +1,11 @@
 package br.unipar.pdvintegrado.models;
 
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
+
 
 @Entity
 @Table(name = "CLIENTE")
@@ -11,8 +15,22 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
+    @NotBlank
+    @NotEmpty
+    @Length(min = 10, max = 256)
     private String nome;
+
+    @NotNull
+    @NotBlank
+    @NotEmpty
+    @Length(min = 7, max = 10)
     private String telefone;
+
+    @NotNull
+    @NotBlank
+    @NotEmpty
+    @Length(min = 10, max = 50)
     private String email;
 
     public Cliente() {
