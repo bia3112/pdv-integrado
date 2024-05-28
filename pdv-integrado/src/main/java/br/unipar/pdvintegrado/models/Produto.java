@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.List;
+
 @Entity
 @Table(name = "PRODUTO")
 public class Produto {
@@ -30,6 +32,9 @@ public class Produto {
     @NotEmpty
     @Length(min = 5, max = 50)
     private String categoria;
+
+    @OneToMany(mappedBy = "produto")
+    private List<ItemVenda> itensVenda;
 
     public Produto() {
     }
@@ -71,5 +76,13 @@ public class Produto {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public List<ItemVenda> getItensVenda() {
+        return itensVenda;
+    }
+
+    public void setItensVenda(List<ItemVenda> itensVenda) {
+        this.itensVenda = itensVenda;
     }
 }

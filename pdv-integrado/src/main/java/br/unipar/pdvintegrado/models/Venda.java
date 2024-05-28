@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "VENDA")
@@ -27,6 +28,12 @@ public class Venda {
 
     @ManyToOne
     private Cliente idCliente;
+
+    @ManyToOne
+    private Cliente cliente;
+
+    @OneToMany(mappedBy = "venda")
+    private List<ItemVenda> itensVenda;
 
     public Venda() {
     }
@@ -77,6 +84,14 @@ public class Venda {
 
     public void setIdCliente(Cliente idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public List<ItemVenda> getItensVenda() {
+        return itensVenda;
+    }
+
+    public void setItensVenda(List<ItemVenda> itensVenda) {
+        this.itensVenda = itensVenda;
     }
 
 }
