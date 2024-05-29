@@ -9,10 +9,10 @@ import java.util.List;
 
 @Repository
 public interface ProdutoRepository  extends JpaRepository<Produto, Long> {
-    @Query
-    public List<Produto> findByCpfContaining(int id);
-
-    @Query
-    public List<Produto> findByEnderecoCidadeEstadoNome(String descricao);
+//    @Query
+//    public List<Produto> findByCpfContaining(int id);
+//
+//    @Query
+//    public List<Produto> findByEnderecoCidadeEstadoNome(String descricao);
 
 }

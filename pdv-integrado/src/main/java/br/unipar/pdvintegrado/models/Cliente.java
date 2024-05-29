@@ -15,21 +15,15 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotNull
-    @NotBlank
-    @NotEmpty
-    @Length(min = 10, max = 256)
+    @NotBlank(message = "Nome é obrigatório.")
+    @Length(min = 10, max = 180)
     private String nome;
 
-    @NotNull
-    @NotBlank
-    @NotEmpty
+    @NotBlank(message = "Telefone é obrigatório.")
     @Length(min = 7, max = 10)
     private String telefone;
 
-    @NotNull
-    @NotBlank
-    @NotEmpty
+    @NotBlank(message = "Email é obrigatório.")
     @Length(min = 10, max = 50)
     private String email;
 

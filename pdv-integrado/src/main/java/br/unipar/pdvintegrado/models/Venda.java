@@ -29,9 +29,6 @@ public class Venda {
     @ManyToOne
     private Cliente idCliente;
 
-    @ManyToOne
-    private Cliente cliente;
-
     @OneToMany(mappedBy = "venda")
     private List<ItemVenda> itensVenda;
 
