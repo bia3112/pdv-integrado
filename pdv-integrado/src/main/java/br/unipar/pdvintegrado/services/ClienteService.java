@@ -1,7 +1,6 @@
 package br.unipar.pdvintegrado.services;
 
 import br.unipar.pdvintegrado.models.Cliente;
-import br.unipar.pdvintegrado.models.Produto;
 import br.unipar.pdvintegrado.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
