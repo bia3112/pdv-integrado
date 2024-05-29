@@ -31,28 +31,16 @@ public class ProdutoController {
             return ResponseEntity.ok(produtoService.getAll());
         }
 
-        @GetMapping("/estado")
-        public ResponseEntity<List<Produto>> findByEstado(@RequestParam("estado") String estado) {
-            return ResponseEntity.ok(produtoService.findByEstadoNome(estado));
-        }
-
         @PostMapping
         public ResponseEntity<Produto> insert(@RequestBody @Valid Produto produto,
                                               UriComponentsBuilder builder) {
 
             produtoService.insert(produto);
-
             URI uri =
                     builder.path("/produto/{id}").
                             buildAndExpand(produto.getId()).toUri();
 
-
-            //URI uri = ServletUriComponentsBuilder.
-            // fromCurrentRequest().path("/{id}").
-            // buildAndExpand(cliente.getId()).toUri();
-
             return ResponseEntity.created(uri).body(produto);
-
         }
 
         @PutMapping("/{id}")

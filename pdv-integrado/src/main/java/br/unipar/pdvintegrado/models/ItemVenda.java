@@ -15,22 +15,14 @@ public class ItemVenda {
     private double valorTotal;
 
     @ManyToOne
-    private Venda idVenda;
+    @JoinColumn(name = "venda_id")
+    private Venda venda;
 
     @ManyToOne
-    private Produto idProduto;
+    @JoinColumn(name = "produto_id")
+    private Produto produto;
 
     public ItemVenda() {
-    }
-
-    public ItemVenda(int id, int quantidade, double valorTotal,
-                     double valorUnitario, Produto idProduto, Venda idVenda) {
-        this.id = id;
-        this.quantidade = quantidade;
-        this.valorTotal = valorTotal;
-        this.valorUnitario = valorUnitario;
-        this.idProduto = idProduto;
-        this.idVenda = idVenda;
     }
 
     public int getId() {
@@ -65,20 +57,19 @@ public class ItemVenda {
         this.valorTotal = valorTotal;
     }
 
-    public Venda getIdVenda() {
-        return idVenda;
+    public Venda getVenda() {
+        return venda;
     }
 
-    public void setIdVenda(Venda idVenda) {
-        this.idVenda = idVenda;
+    public void setVenda(Venda venda) {
+        this.venda = venda;
     }
 
-    public Produto getIdProduto() {
-        return idProduto;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setIdProduto(Produto idProduto) {
-        this.idProduto = idProduto;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
-
 }

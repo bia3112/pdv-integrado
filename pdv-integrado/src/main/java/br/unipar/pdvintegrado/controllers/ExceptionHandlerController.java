@@ -16,7 +16,7 @@ import java.util.List;
 public class ExceptionHandlerController {
 
     @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)//Determina o status através de annotations
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ApiException handleException(Exception e) {
         return new ApiException(e.getMessage());
     }
