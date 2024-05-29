@@ -33,20 +33,16 @@ public class ClienteController {
     public ResponseEntity<Cliente> insert(@RequestBody @Valid Cliente cliente,
                                           UriComponentsBuilder builder) {
         clienteService.insert(cliente);
-
-        URI uri =
-                builder.path("/cliente/{id}").
+        URI uri = builder.path("/cliente/{id}").
                         buildAndExpand(cliente.getId()).toUri();
 
         return ResponseEntity.created(uri).body(cliente);
-
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Cliente> update(@PathVariable int id,
                                           @RequestBody Cliente cliente) {
         clienteService.update(cliente);
-
         return ResponseEntity.ok(cliente);
     }
 
