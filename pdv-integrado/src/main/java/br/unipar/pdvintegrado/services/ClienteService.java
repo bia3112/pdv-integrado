@@ -20,11 +20,14 @@ public class ClienteService {
     }
 
     public List<Cliente> findAll(){
+
         return clienteRepository.findAll();
     }
 
     public Cliente insert(Cliente cliente) {
-        return clienteRepository.save(cliente);
+
+         clienteRepository.save(cliente);
+         return cliente;
     }
 
     public Cliente update(Cliente cliente) {
