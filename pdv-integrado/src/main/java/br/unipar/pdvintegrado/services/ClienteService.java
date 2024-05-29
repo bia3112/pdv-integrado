@@ -1,6 +1,7 @@
 package br.unipar.pdvintegrado.services;
 
 import br.unipar.pdvintegrado.models.Cliente;
+import br.unipar.pdvintegrado.models.Produto;
 import br.unipar.pdvintegrado.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +15,25 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public Cliente getById(Long id) {
+    public Cliente findById(Long id) {
         Optional<Cliente> cliente = clienteRepository.findById(id);
         return cliente.orElse(null);
     }
 
-    public List<Cliente> getAll(){
+    public List<Cliente> findAll(){
         return clienteRepository.findAll();
+    }
+
+    public Cliente insert(Cliente cliente) {
+        return clienteRepository.save(cliente);
+    }
+
+    public Cliente update(Cliente cliente) {
+        return clienteRepository.save(cliente);
+    }
+
+    public void deleteById(Long id) {
+        clienteRepository.deleteById(id);
     }
 
 }
