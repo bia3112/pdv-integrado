@@ -25,29 +25,17 @@ public class VendaService {
     }
 
     public Venda insert(Venda venda) {
-        validarAtributos(venda);
         vendaRepository.save(venda);
         return venda;
     }
 
     public Venda update(Venda venda) {
-        validarAtributos(venda);
-        return vendaRepository.save(venda);
+        vendaRepository.save(venda);
+        return venda;
     }
 
     public void delete(Long id) {
         vendaRepository.deleteById(id);
-    }
-
-    private void validarAtributos(Venda venda) {
-        Cliente cliente = venda.getIdCliente();
-        if(cliente == null) {
-            throw new IllegalArgumentException("ID não pode ser zero.");
-        }
-
-//        if(venda.getId() <= 0) {
-//            throw new IllegalArgumentException(("ID precisa ser maior que 0."));
-//        }
     }
 
 }

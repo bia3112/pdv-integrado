@@ -1,6 +1,8 @@
 package br.unipar.pdvintegrado.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "ITEM_VENDA")
@@ -14,10 +16,12 @@ public class ItemVenda {
     private double valorUnitario;
     private double valorTotal;
 
+    @NotBlank
     @ManyToOne
     @JoinColumn(name = "venda_id")
     private Venda venda;
 
+    @NotBlank
     @ManyToOne
     @JoinColumn(name = "produto_id")
     private Produto produto;

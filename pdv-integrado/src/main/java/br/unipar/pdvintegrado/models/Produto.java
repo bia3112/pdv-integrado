@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import org.hibernate.validator.constraints.Length;
 
 import java.util.List;
@@ -16,25 +17,17 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotNull
     @NotBlank
-    @NotEmpty
     @Length(min = 3, max = 256)
     private String descricao;
 
     @NotNull
-    @NotBlank
-    @NotEmpty
+    @Positive
     private double valor;
 
-    @NotNull
     @NotBlank
-    @NotEmpty
     @Length(min = 5, max = 50)
     private String categoria;
-
-    @OneToMany(mappedBy = "produto")
-    private List<ItemVenda> itensVenda;
 
     public Produto() {
     }
@@ -78,11 +71,4 @@ public class Produto {
         this.categoria = categoria;
     }
 
-    public List<ItemVenda> getItensVenda() {
-        return itensVenda;
-    }
-
-    public void setItensVenda(List<ItemVenda> itensVenda) {
-        this.itensVenda = itensVenda;
-    }
 }

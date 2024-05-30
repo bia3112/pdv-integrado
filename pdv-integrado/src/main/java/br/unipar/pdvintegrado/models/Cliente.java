@@ -2,8 +2,6 @@ package br.unipar.pdvintegrado.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 
@@ -15,15 +13,15 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotBlank(message = "Nome é obrigatório.")
+    @NotBlank
     @Length(min = 10, max = 180)
     private String nome;
 
-    @NotBlank(message = "Telefone é obrigatório.")
+    @NotBlank
     @Length(min = 7, max = 10)
     private String telefone;
 
-    @NotBlank(message = "Email é obrigatório.")
+    @NotBlank
     @Length(min = 10, max = 50)
     private String email;
 
