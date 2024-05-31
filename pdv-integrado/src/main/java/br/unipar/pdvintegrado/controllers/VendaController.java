@@ -1,9 +1,12 @@
 package br.unipar.pdvintegrado.controllers;
 
 import br.unipar.pdvintegrado.models.Venda;
+import br.unipar.pdvintegrado.models.VendaRequest;
+import br.unipar.pdvintegrado.models.VendaResponse;
 import br.unipar.pdvintegrado.services.VendaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +49,12 @@ public class VendaController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         vendaService.delete(id);
+    }
+
+    @PostMapping("/calcular")
+    public ResponseEntity<VendaResponse> calcularVenda(@Valid @RequestBody VendaRequest vendaRequest) {
+        VendaResponse response = vendaService.calcularVenda(vendaRequest);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }

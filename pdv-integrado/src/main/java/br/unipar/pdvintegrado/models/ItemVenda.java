@@ -10,7 +10,7 @@ public class ItemVenda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     private int quantidade;
     private double valorUnitario;
@@ -29,11 +29,11 @@ public class ItemVenda {
     public ItemVenda() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

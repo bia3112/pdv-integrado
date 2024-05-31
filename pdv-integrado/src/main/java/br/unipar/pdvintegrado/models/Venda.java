@@ -15,7 +15,7 @@ public class Venda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @NotNull
     @NotBlank
@@ -35,7 +35,7 @@ public class Venda {
     public Venda() {
     }
 
-    public Venda(int id, String observacoes, Timestamp data, double total, Cliente idCliente) {
+    public Venda(long id, String observacoes, Timestamp data, double total, Cliente idCliente) {
         this.id = id;
         this.observacoes = observacoes;
         this.data = data;
@@ -43,11 +43,11 @@ public class Venda {
         this.idCliente = idCliente;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
