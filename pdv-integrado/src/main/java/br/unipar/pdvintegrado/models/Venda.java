@@ -29,7 +29,7 @@ public class Venda {
     @ManyToOne
     private Cliente idCliente;
 
-    @OneToMany(mappedBy = "venda")
+    @OneToMany
     private List<ItemVenda> itensVenda;
 
     public Venda() {

@@ -16,16 +16,6 @@ public class ItemVenda {
     private double valorUnitario;
     private double valorTotal;
 
-    @NotBlank
-    @ManyToOne
-    @JoinColumn(name = "venda_id")
-    private Venda venda;
-
-    @NotBlank
-    @ManyToOne
-    @JoinColumn(name = "produto_id")
-    private Produto produto;
-
     public ItemVenda() {
     }
 
@@ -61,19 +51,4 @@ public class ItemVenda {
         this.valorTotal = valorTotal;
     }
 
-    public Venda getVenda() {
-        return venda;
-    }
-
-    public void setVenda(Venda venda) {
-        this.venda = venda;
-    }
-
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
 }
