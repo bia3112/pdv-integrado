@@ -3,7 +3,7 @@ package br.unipar.pdvintegrado.exceptions;
 import java.util.Arrays;
 import java.util.List;
 
-public class ApiException {
+public class ApiException extends RuntimeException {
     private List<String> errorList;
 
     public ApiException(String message) {
@@ -21,4 +21,6 @@ public class ApiException {
     public void setErrorList(List<String> errorList) {
         this.errorList = errorList;
     }
+
+
 }
