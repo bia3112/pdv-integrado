@@ -29,7 +29,7 @@ public class Venda {
     @ManyToOne
     private Cliente idCliente;
 
-    @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
+    @OneToMany
     private List<ItemVenda> listaItens;
 
     public Venda() {
