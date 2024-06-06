@@ -29,18 +29,19 @@ public class Venda {
     @ManyToOne
     private Cliente idCliente;
 
-    @OneToMany
-    private List<ItemVenda> itensVenda;
+    @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
+    private List<ItemVenda> listaItens;
 
     public Venda() {
     }
 
-    public Venda(long id, String observacoes, Timestamp data, double total, Cliente idCliente) {
+    public Venda(long id, String observacoes, Timestamp data, double total, Cliente idCliente, List<ItemVenda> listaItens) {
         this.id = id;
         this.observacoes = observacoes;
         this.data = data;
         this.total = total;
         this.idCliente = idCliente;
+        this.listaItens = listaItens;
     }
 
     public long getId() {
@@ -83,12 +84,11 @@ public class Venda {
         this.idCliente = idCliente;
     }
 
-    public List<ItemVenda> getItensVenda() {
-        return itensVenda;
+    public List<ItemVenda> getListaItens() {
+        return listaItens;
     }
 
-    public void setItensVenda(List<ItemVenda> itensVenda) {
-        this.itensVenda = itensVenda;
+    public void setListaItens(List<ItemVenda> listaItens) {
+        this.listaItens = listaItens;
     }
-
 }

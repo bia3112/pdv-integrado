@@ -16,7 +16,23 @@ public class ItemVenda {
     private double valorUnitario;
     private double valorTotal;
 
+//    @OneToOne
+//    @JoinColumn(name = "venda_id")
+//    private Venda venda;
+
+    @OneToOne
+    @JoinColumn(name = "produto_id")
+    private Produto produto;
+
     public ItemVenda() {
+    }
+
+    public ItemVenda(long id, int quantidade, double valorUnitario, double valorTotal, Produto produto) {
+        this.id = id;
+        this.quantidade = quantidade;
+        this.valorUnitario = valorUnitario;
+        this.valorTotal = valorTotal;
+        this.produto = produto;
     }
 
     public long getId() {
@@ -51,4 +67,19 @@ public class ItemVenda {
         this.valorTotal = valorTotal;
     }
 
+//    public Venda getVenda() {
+//        return venda;
+//    }
+//
+//    public void setVenda(Venda venda) {
+//        this.venda = venda;
+//    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
 }
