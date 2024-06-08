@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import org.hibernate.validator.constraints.Length;
 
 import java.sql.Timestamp;
@@ -23,13 +24,16 @@ public class Venda {
     @Length(min = 5, max = 256)
     private String observacoes;
 
+    @NotNull
     private Timestamp data;
+    @PositiveOrZero
     private double total;
 
     @ManyToOne
     private Cliente idCliente;
 
     @OneToMany
+    @NotEmpty
     private List<ItemVenda> listaItens;
 
     public Venda() {

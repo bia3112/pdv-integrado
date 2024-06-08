@@ -1,5 +1,6 @@
 package br.unipar.pdvintegrado.services;
 
+import br.unipar.pdvintegrado.exceptions.Validacao;
 import br.unipar.pdvintegrado.models.ItemVenda;
 import br.unipar.pdvintegrado.repositories.ItemVendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class ItemVendaService {
     }
 
     public ItemVenda insert(ItemVenda itemVenda) {
+        Validacao.validate(itemVenda);
         itemVendaRepository.save(itemVenda);
         return itemVenda;
     }

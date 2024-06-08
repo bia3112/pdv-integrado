@@ -1,6 +1,7 @@
 package br.unipar.pdvintegrado.services;
 
 import br.unipar.pdvintegrado.exceptions.ApiException;
+import br.unipar.pdvintegrado.exceptions.Validacao;
 import br.unipar.pdvintegrado.models.Produto;
 import br.unipar.pdvintegrado.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class ProdutoService {
     }
 
     public Produto insert(Produto produto) {
+        Validacao.validate(produto);
         produtoRepository.save(produto);
         return produto;
     }

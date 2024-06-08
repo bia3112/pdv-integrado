@@ -1,13 +1,12 @@
 package br.unipar.pdvintegrado.services;
 
-import br.unipar.pdvintegrado.exceptions.ObjetoNaoEncontradoException;
+import br.unipar.pdvintegrado.exceptions.Validacao;
 import br.unipar.pdvintegrado.models.*;
 import br.unipar.pdvintegrado.repositories.ProdutoRepository;
 import br.unipar.pdvintegrado.repositories.VendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +26,7 @@ public class VendaService {
     }
 
     public Venda insert(Venda venda) {
-
+        Validacao.validate(venda);
         vendaRepository.save(venda);
         return venda;
     }
@@ -42,21 +41,5 @@ public class VendaService {
     }
 
     private ProdutoRepository produtoRepository;
-
-    public VendaResponse calcularVenda(VendaRequest vendaRequest) {
-        List<ItemVenda> itensVenda = vendaRequest.getItensVenda();
-        double total = 0.0;
-
-        for (ItemVenda item : itensVenda) {
-            Produto produto = produtoRepository.findById(item.getId())
-                    .orElseThrow(() -> new ObjetoNaoEncontradoException("Produto não encontrado"));
-            double subtotal = produto.getValor() * item.getQuantidade();
-            total += subtotal;
-        }
-
-        VendaResponse response = new VendaResponse();
-        response.setTotal(total);
-        return response;
-    }
 
 }

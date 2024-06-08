@@ -3,6 +3,7 @@ package br.unipar.pdvintegrado.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 
 @Entity
 @Table(name = "ITEM_VENDA")
@@ -12,13 +13,17 @@ public class ItemVenda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotBlank
+    @NotNull
     private int quantidade;
+
+    @PositiveOrZero
     private double valorUnitario;
     private double valorTotal;
 
-//    @OneToOne
-//    @JoinColumn(name = "venda_id")
-//    private Venda venda;
+    @OneToOne
+    @JoinColumn(name = "venda_id")
+    private Venda venda;
 
     @OneToOne
     @JoinColumn(name = "produto_id")
@@ -67,13 +72,13 @@ public class ItemVenda {
         this.valorTotal = valorTotal;
     }
 
-//    public Venda getVenda() {
-//        return venda;
-//    }
-//
-//    public void setVenda(Venda venda) {
-//        this.venda = venda;
-//    }
+    public Venda getVenda() {
+        return venda;
+    }
+
+    public void setVenda(Venda venda) {
+        this.venda = venda;
+    }
 
     public Produto getProduto() {
         return produto;

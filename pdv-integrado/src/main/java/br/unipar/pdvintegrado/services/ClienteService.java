@@ -1,5 +1,6 @@
 package br.unipar.pdvintegrado.services;
 
+import br.unipar.pdvintegrado.exceptions.Validacao;
 import br.unipar.pdvintegrado.models.Cliente;
 import br.unipar.pdvintegrado.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,9 @@ public class ClienteService {
     }
 
     public Cliente insert(Cliente cliente) {
-
-         clienteRepository.save(cliente);
-         return cliente;
+        Validacao.validate(cliente);
+        clienteRepository.save(cliente);
+        return cliente;
     }
 
     public Cliente update(Cliente cliente) {
